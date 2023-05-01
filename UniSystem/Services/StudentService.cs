@@ -1,4 +1,5 @@
-﻿using UniSystem.Data;
+﻿using UniSystem.Common;
+using UniSystem.Data;
 using UniSystem.Models;
 
 namespace UniSystem.Services
@@ -26,7 +27,7 @@ namespace UniSystem.Services
                 EGN = studentBindingModel.EGN,
                 FirstName = studentBindingModel.FirstName,
                 LastName = studentBindingModel.LastName,
-                Gender = studentBindingModel.Gender,
+                Gender = studentBindingModel.IsMale ? Gender.Male : Gender.Female,
                 MobileNumber = studentBindingModel.MobileNumber,
                 AverageGrade = studentBindingModel.Grades.Average(x => x.Value)
             };

@@ -8,8 +8,13 @@ namespace UniSystem.Models
         public string EGN { get; set; }
         public string FirstName { get; set; }
         public string LastName { get; set; }
-        public Gender Gender { get; set; }
+        public bool IsMale { get; set; }
         public string MobileNumber { get; set; }
-        public Dictionary<string, int> Grades { get; set; }
+        public Dictionary<string, double> Grades { get; set; }
+
+        public StudentBindingModel()
+        {
+            this.Grades = new Dictionary<string, double>();
+        }
     }
 }

@@ -1,20 +1,21 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-
-namespace UniSystem.Controls
+﻿namespace UniSystem.Controls
 {
     public partial class StudentsControl : UserControl
     {
         public StudentsControl()
         {
             InitializeComponent();
+            RefreshTable();
+        }
+
+        public void RefreshTable()
+        {
+            var students = Program.StudentService.GetStudents();
+
+            foreach (var student in students)
+            {
+                dataGridViewStudents.Rows.Add(student.FacultyNumber, student.FirstName, student.LastName, $"{student.AverageGrade:f2}");
+            }
         }
     }
 }

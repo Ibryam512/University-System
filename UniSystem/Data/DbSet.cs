@@ -34,6 +34,7 @@ namespace UniSystem.Data
 
         public void Add(T item, bool increment = true)
         {
+            item.CreationDate = DateTime.Now;
             LocalAdd(item);
 
             if (increment)
@@ -202,6 +203,9 @@ namespace UniSystem.Data
                     return decimal.Parse(value);
                 case "System.DateTime":
                     return DateTime.Parse(value);
+                //hardcoded
+                case "UniSystem.Common.Gender":
+                    return Enum.Parse(typeof(Common.Gender), value);
                 default: return null;
             }
         }
