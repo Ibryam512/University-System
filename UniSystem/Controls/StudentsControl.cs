@@ -10,6 +10,7 @@
 
         public void RefreshTable()
         {
+            dataGridViewStudents.Rows.Clear();
             var students = Program.StudentService.GetStudents();
 
             foreach (var student in students)

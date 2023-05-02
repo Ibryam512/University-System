@@ -3,10 +3,12 @@
     public class UniSystemDbContext
     {
         public DbSet<Student> Students { get; set; }
+        public DbSet<Grade> Grades { get; set; }
 
         public UniSystemDbContext()
         {
             Students = new DbSet<Student>();
+            Grades = new DbSet<Grade>();
         }
     }
 }

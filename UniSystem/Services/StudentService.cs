@@ -33,6 +33,8 @@ namespace UniSystem.Services
             };
 
             this._context.Students.Add(student);
+
+            Program.GradeService.AddGrades(student.Id, studentBindingModel.Grades);
         }
     }
 }
