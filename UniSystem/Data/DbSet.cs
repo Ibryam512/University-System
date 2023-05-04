@@ -206,6 +206,8 @@ namespace UniSystem.Data
                 //hardcoded
                 case "UniSystem.Common.Gender":
                     return Enum.Parse(typeof(Common.Gender), value);
+                case "UniSystem.Common.Role":
+                    return Enum.Parse(typeof(Common.Role), value);
                 default: return null;
             }
         }

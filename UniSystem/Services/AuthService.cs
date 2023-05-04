@@ -26,8 +26,12 @@ namespace UniSystem.Services
             if (user.Password != login.Password)
                 throw new ArgumentException("The email or password are wrong.");
 
+            LoggedUser.Id = user.Id;
             LoggedUser.Email = user.Email;
             LoggedUser.Role = user.Role;
+            LoggedUser.Name = (user.Role == Common.Role.Student)
+                ? this.context.Students.SingleOrDefault(x => x.Id == user.ProfileId).FirstName
+                : this.context.Admins.SingleOrDefault(x => x.Id == user.ProfileId).Name;
         }
     }
 }

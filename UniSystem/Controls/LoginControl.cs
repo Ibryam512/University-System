@@ -24,12 +24,11 @@ namespace UniSystem.Controls
         {
             try
             {
-                //Service.AuthService.Login(loginDTO);
+                Program.AuthService.Login(loginBindingModel);
                 ((Form)this.TopLevelControl).Hide();
                 var mainForm = new MainForm();
                 mainForm.Closed += (s, args) => ((Form)this.TopLevelControl).Close();
                 mainForm.Show();
-
             }
             catch (Exception ex)
             {

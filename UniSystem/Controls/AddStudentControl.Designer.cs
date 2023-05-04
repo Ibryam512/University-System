@@ -168,6 +168,7 @@
             Controls.Add(textBoxFacultyNumber);
             Name = "AddStudentControl";
             Size = new Size(966, 441);
+            Load += AddStudentControl_Load;
             groupBoxGender.ResumeLayout(false);
             groupBoxGender.PerformLayout();
             groupBoxGrades.ResumeLayout(false);
