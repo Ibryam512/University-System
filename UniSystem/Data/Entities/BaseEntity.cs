@@ -1,4 +1,4 @@
-﻿namespace UniSystem.Data
+﻿namespace UniSystem.Data.Entities
 {
     public class BaseEntity
     {

@@ -1,4 +1,5 @@
 ﻿using UniSystem.Controls;
+using UniSystem.Controls.News;
 
 namespace UniSystem
 {
@@ -8,8 +9,10 @@ namespace UniSystem
         {
             { "home", new StudentsControl() },
             { "add", new AddStudentControl() },
-            { "edit", new StudentsControl() },
-            { "delete", new StudentsControl() }
+            { "news", new NewsControl() },
+            { "profile", new StudentsControl() },
+            { "grades", new StudentsControl() },
+            { "scholarships", new StudentsControl() }
         };
 
         static Router()

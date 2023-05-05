@@ -1,6 +1,6 @@
 ﻿using UniSystem.Common;
 
-namespace UniSystem.Data
+namespace UniSystem.Data.Entities
 {
     public class Student : BaseEntity
     {

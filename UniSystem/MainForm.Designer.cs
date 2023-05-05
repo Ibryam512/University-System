@@ -28,108 +28,97 @@
         /// </summary>
         private void InitializeComponent()
         {
-            buttonHome = new Button();
-            buttonAdd = new Button();
-            buttonEdit = new Button();
-            buttonDelete = new Button();
+            buttonNews = new Button();
+            buttonProfile = new Button();
+            buttonGrades = new Button();
+            buttonScholarships = new Button();
             panelMain = new Panel();
-            panel1 = new Panel();
             SuspendLayout();
             // 
-            // buttonHome
+            // buttonNews
             // 
-            buttonHome.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
-            buttonHome.BackColor = SystemColors.HotTrack;
-            buttonHome.FlatAppearance.BorderSize = 0;
-            buttonHome.FlatStyle = FlatStyle.Flat;
-            buttonHome.Font = new Font("Segoe UI", 16F, FontStyle.Regular, GraphicsUnit.Point);
-            buttonHome.Location = new Point(0, 0);
-            buttonHome.Margin = new Padding(2, 2, 2, 2);
-            buttonHome.Name = "buttonHome";
-            buttonHome.Size = new Size(242, 56);
-            buttonHome.TabIndex = 0;
-            buttonHome.Text = "Начало";
-            buttonHome.UseVisualStyleBackColor = false;
-            buttonHome.Click += navigationButtonClick;
+            buttonNews.Anchor = AnchorStyles.None;
+            buttonNews.BackColor = SystemColors.HotTrack;
+            buttonNews.FlatAppearance.BorderSize = 0;
+            buttonNews.FlatStyle = FlatStyle.Flat;
+            buttonNews.Font = new Font("Segoe UI", 16F, FontStyle.Regular, GraphicsUnit.Point);
+            buttonNews.Location = new Point(0, 0);
+            buttonNews.Margin = new Padding(2);
+            buttonNews.Name = "buttonNews";
+            buttonNews.Size = new Size(370, 56);
+            buttonNews.TabIndex = 0;
+            buttonNews.Text = "Новини";
+            buttonNews.UseVisualStyleBackColor = false;
+            buttonNews.Click += navigationButtonClick;
             // 
-            // buttonAdd
+            // buttonProfile
             // 
-            buttonAdd.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
-            buttonAdd.BackColor = SystemColors.HotTrack;
-            buttonAdd.FlatAppearance.BorderSize = 0;
-            buttonAdd.FlatStyle = FlatStyle.Flat;
-            buttonAdd.Font = new Font("Segoe UI", 16F, FontStyle.Regular, GraphicsUnit.Point);
-            buttonAdd.Location = new Point(242, 0);
-            buttonAdd.Margin = new Padding(2, 2, 2, 2);
-            buttonAdd.Name = "buttonAdd";
-            buttonAdd.Size = new Size(242, 56);
-            buttonAdd.TabIndex = 1;
-            buttonAdd.Text = "Добави студент";
-            buttonAdd.UseVisualStyleBackColor = false;
-            buttonAdd.Click += navigationButtonClick;
+            buttonProfile.Anchor = AnchorStyles.None;
+            buttonProfile.BackColor = SystemColors.HotTrack;
+            buttonProfile.FlatAppearance.BorderSize = 0;
+            buttonProfile.FlatStyle = FlatStyle.Flat;
+            buttonProfile.Font = new Font("Segoe UI", 16F, FontStyle.Regular, GraphicsUnit.Point);
+            buttonProfile.Location = new Point(370, 0);
+            buttonProfile.Margin = new Padding(2);
+            buttonProfile.Name = "buttonProfile";
+            buttonProfile.Size = new Size(370, 56);
+            buttonProfile.TabIndex = 1;
+            buttonProfile.Text = "Профил";
+            buttonProfile.UseVisualStyleBackColor = false;
+            buttonProfile.Click += navigationButtonClick;
             // 
-            // buttonEdit
+            // buttonGrades
             // 
-            buttonEdit.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
-            buttonEdit.BackColor = SystemColors.HotTrack;
-            buttonEdit.FlatAppearance.BorderSize = 0;
-            buttonEdit.FlatStyle = FlatStyle.Flat;
-            buttonEdit.Font = new Font("Segoe UI", 14F, FontStyle.Regular, GraphicsUnit.Point);
-            buttonEdit.Location = new Point(483, 0);
-            buttonEdit.Margin = new Padding(2, 2, 2, 2);
-            buttonEdit.Name = "buttonEdit";
-            buttonEdit.Size = new Size(242, 56);
-            buttonEdit.TabIndex = 2;
-            buttonEdit.Text = "Редактирай студент";
-            buttonEdit.UseVisualStyleBackColor = false;
-            buttonEdit.Click += navigationButtonClick;
+            buttonGrades.Anchor = AnchorStyles.None;
+            buttonGrades.BackColor = SystemColors.HotTrack;
+            buttonGrades.FlatAppearance.BorderSize = 0;
+            buttonGrades.FlatStyle = FlatStyle.Flat;
+            buttonGrades.Font = new Font("Segoe UI", 16F, FontStyle.Regular, GraphicsUnit.Point);
+            buttonGrades.Location = new Point(740, 0);
+            buttonGrades.Margin = new Padding(2);
+            buttonGrades.Name = "buttonGrades";
+            buttonGrades.Size = new Size(370, 56);
+            buttonGrades.TabIndex = 2;
+            buttonGrades.Text = "Оценки";
+            buttonGrades.UseVisualStyleBackColor = false;
+            buttonGrades.Click += navigationButtonClick;
             // 
-            // buttonDelete
+            // buttonScholarships
             // 
-            buttonDelete.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
-            buttonDelete.AutoSize = true;
-            buttonDelete.BackColor = SystemColors.HotTrack;
-            buttonDelete.FlatAppearance.BorderSize = 0;
-            buttonDelete.FlatStyle = FlatStyle.Flat;
-            buttonDelete.Font = new Font("Segoe UI", 16F, FontStyle.Regular, GraphicsUnit.Point);
-            buttonDelete.Location = new Point(725, 0);
-            buttonDelete.Margin = new Padding(2, 2, 2, 2);
-            buttonDelete.Name = "buttonDelete";
-            buttonDelete.Size = new Size(242, 56);
-            buttonDelete.TabIndex = 3;
-            buttonDelete.Text = "Изтрий студент";
-            buttonDelete.UseVisualStyleBackColor = false;
-            buttonDelete.Click += navigationButtonClick;
+            buttonScholarships.Anchor = AnchorStyles.None;
+            buttonScholarships.AutoSize = true;
+            buttonScholarships.BackColor = SystemColors.HotTrack;
+            buttonScholarships.FlatAppearance.BorderSize = 0;
+            buttonScholarships.FlatStyle = FlatStyle.Flat;
+            buttonScholarships.Font = new Font("Segoe UI", 16F, FontStyle.Regular, GraphicsUnit.Point);
+            buttonScholarships.Location = new Point(1110, 0);
+            buttonScholarships.Margin = new Padding(2);
+            buttonScholarships.Name = "buttonScholarships";
+            buttonScholarships.Size = new Size(370, 56);
+            buttonScholarships.TabIndex = 3;
+            buttonScholarships.Text = "Стипендии";
+            buttonScholarships.UseVisualStyleBackColor = false;
+            buttonScholarships.Click += navigationButtonClick;
             // 
             // panelMain
             // 
-            panelMain.Location = new Point(0, 55);
-            panelMain.Margin = new Padding(2, 2, 2, 2);
+            panelMain.Location = new Point(0, 56);
+            panelMain.Margin = new Padding(2);
             panelMain.Name = "panelMain";
-            panelMain.Size = new Size(966, 441);
+            panelMain.Size = new Size(1461, 607);
             panelMain.TabIndex = 4;
-            // 
-            // panel1
-            // 
-            panel1.BackColor = SystemColors.HotTrack;
-            panel1.Location = new Point(0, 0);
-            panel1.Margin = new Padding(2, 2, 2, 2);
-            panel1.Name = "panel1";
-            panel1.Size = new Size(966, 56);
-            panel1.TabIndex = 5;
             // 
             // MainForm
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(966, 496);
+            ClientSize = new Size(1462, 664);
+            Controls.Add(buttonScholarships);
             Controls.Add(panelMain);
-            Controls.Add(buttonDelete);
-            Controls.Add(buttonEdit);
-            Controls.Add(buttonAdd);
-            Controls.Add(buttonHome);
-            Controls.Add(panel1);
-            Margin = new Padding(2, 2, 2, 2);
+            Controls.Add(buttonGrades);
+            Controls.Add(buttonProfile);
+            Controls.Add(buttonNews);
+            Margin = new Padding(2);
             Name = "MainForm";
             Text = "Form1";
             ResumeLayout(false);
@@ -138,11 +127,10 @@
 
         #endregion
 
-        private Button buttonHome;
-        private Button buttonAdd;
-        private Button buttonEdit;
-        private Button buttonDelete;
+        private Button buttonNews;
+        private Button buttonProfile;
+        private Button buttonGrades;
+        private Button buttonScholarships;
         private Panel panelMain;
-        private Panel panel1;
     }
 }

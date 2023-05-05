@@ -1,4 +1,5 @@
 ﻿using System.Reflection;
+using UniSystem.Data.Entities;
 
 namespace UniSystem.Data
 {

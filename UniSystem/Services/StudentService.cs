@@ -1,5 +1,6 @@
 ﻿using UniSystem.Common;
 using UniSystem.Data;
+using UniSystem.Data.Entities;
 using UniSystem.Models;
 
 namespace UniSystem.Services

@@ -23,7 +23,7 @@ namespace UniSystem.Services
         {
             var user = this.context.Users.SingleOrDefault(x => x.Email == login.Email);
 
-            if (user.Password != login.Password)
+            if (user == null || user.Password != login.Password)
                 throw new ArgumentException("The email or password are wrong.");
 
             LoggedUser.Id = user.Id;
@@ -31,7 +31,7 @@ namespace UniSystem.Services
             LoggedUser.Role = user.Role;
             LoggedUser.Name = (user.Role == Common.Role.Student)
                 ? this.context.Students.SingleOrDefault(x => x.Id == user.ProfileId).FirstName
-                : this.context.Admins.SingleOrDefault(x => x.Id == user.ProfileId).Name;
+                : this.context.Admins.SingleOrDefault(x => x.Id == user.ProfileId).FirstName;
         }
     }
 }

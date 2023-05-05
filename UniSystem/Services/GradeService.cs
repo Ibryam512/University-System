@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using UniSystem.Data;
+using UniSystem.Data.Entities;
 
 namespace UniSystem.Services
 {
