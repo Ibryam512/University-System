@@ -1,6 +1,7 @@
 ﻿using System.Runtime.CompilerServices;
 using UniSystem.Controls;
 using UniSystem.Controls.News;
+using UniSystem.Controls.Profile;
 
 namespace UniSystem
 {
@@ -12,9 +13,9 @@ namespace UniSystem
             { "add", new AddStudentControl() },
             { "news", new NewsControl() },
             { "news/add", new AddNewsControl() },
-            { "profile", new StudentsControl() },
+            { "profile", new ProfileControl() },
             { "grades", new StudentsControl() },
-            { "scholarships", new StudentsControl() }
+            { "students", new StudentsControl() }
         };
 
         public static MainForm MainForm { get; private set; }

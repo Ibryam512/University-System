@@ -31,7 +31,7 @@
             buttonNews = new Button();
             buttonProfile = new Button();
             buttonGrades = new Button();
-            buttonScholarships = new Button();
+            buttonStudents = new Button();
             panelMain = new Panel();
             SuspendLayout();
             // 
@@ -83,22 +83,22 @@
             buttonGrades.UseVisualStyleBackColor = false;
             buttonGrades.Click += navigationButtonClick;
             // 
-            // buttonScholarships
+            // buttonStudents
             // 
-            buttonScholarships.Anchor = AnchorStyles.None;
-            buttonScholarships.AutoSize = true;
-            buttonScholarships.BackColor = SystemColors.HotTrack;
-            buttonScholarships.FlatAppearance.BorderSize = 0;
-            buttonScholarships.FlatStyle = FlatStyle.Flat;
-            buttonScholarships.Font = new Font("Segoe UI", 16F, FontStyle.Regular, GraphicsUnit.Point);
-            buttonScholarships.Location = new Point(1110, 0);
-            buttonScholarships.Margin = new Padding(2);
-            buttonScholarships.Name = "buttonScholarships";
-            buttonScholarships.Size = new Size(370, 56);
-            buttonScholarships.TabIndex = 3;
-            buttonScholarships.Text = "Стипендии";
-            buttonScholarships.UseVisualStyleBackColor = false;
-            buttonScholarships.Click += navigationButtonClick;
+            buttonStudents.Anchor = AnchorStyles.None;
+            buttonStudents.AutoSize = true;
+            buttonStudents.BackColor = SystemColors.HotTrack;
+            buttonStudents.FlatAppearance.BorderSize = 0;
+            buttonStudents.FlatStyle = FlatStyle.Flat;
+            buttonStudents.Font = new Font("Segoe UI", 16F, FontStyle.Regular, GraphicsUnit.Point);
+            buttonStudents.Location = new Point(1110, 0);
+            buttonStudents.Margin = new Padding(2);
+            buttonStudents.Name = "buttonStudents";
+            buttonStudents.Size = new Size(370, 56);
+            buttonStudents.TabIndex = 3;
+            buttonStudents.Text = "Студенти";
+            buttonStudents.UseVisualStyleBackColor = false;
+            buttonStudents.Click += navigationButtonClick;
             // 
             // panelMain
             // 
@@ -113,7 +113,7 @@
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1462, 664);
-            Controls.Add(buttonScholarships);
+            Controls.Add(buttonStudents);
             Controls.Add(panelMain);
             Controls.Add(buttonGrades);
             Controls.Add(buttonProfile);
@@ -121,6 +121,7 @@
             Margin = new Padding(2);
             Name = "MainForm";
             Text = "Form1";
+            Load += MainForm_Load;
             ResumeLayout(false);
             PerformLayout();
         }
@@ -130,7 +131,7 @@
         private Button buttonNews;
         private Button buttonProfile;
         private Button buttonGrades;
-        private Button buttonScholarships;
+        private Button buttonStudents;
         private Panel panelMain;
     }
 }

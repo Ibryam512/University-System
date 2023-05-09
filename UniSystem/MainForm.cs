@@ -13,5 +13,10 @@ namespace UniSystem
             string route = button.Name.Replace("button", "").ToLower();
             panelMain.Navigate(route);
         }
+
+        private void MainForm_Load(object sender, EventArgs e)
+        {
+            buttonStudents.Enabled = LoggedUser.Role == Common.Role.Admin;
+        }
     }
 }
