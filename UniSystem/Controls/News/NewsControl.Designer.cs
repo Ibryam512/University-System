@@ -28,18 +28,33 @@
         /// </summary>
         private void InitializeComponent()
         {
+            buttonAddNews = new Button();
             SuspendLayout();
+            // 
+            // buttonAddNews
+            // 
+            buttonAddNews.Font = new Font("Segoe UI", 16F, FontStyle.Regular, GraphicsUnit.Point);
+            buttonAddNews.Location = new Point(618, 93);
+            buttonAddNews.Name = "buttonAddNews";
+            buttonAddNews.Size = new Size(279, 50);
+            buttonAddNews.TabIndex = 0;
+            buttonAddNews.Text = "Добави новина";
+            buttonAddNews.UseVisualStyleBackColor = true;
+            buttonAddNews.Click += buttonAddNews_Click;
             // 
             // NewsControl
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             AutoScroll = true;
+            Controls.Add(buttonAddNews);
             Name = "NewsControl";
             Size = new Size(1461, 607);
             ResumeLayout(false);
         }
 
         #endregion
+
+        private Button buttonAddNews;
     }
 }

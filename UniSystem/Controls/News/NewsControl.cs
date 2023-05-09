@@ -1,25 +1,19 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-
-namespace UniSystem.Controls.News
+﻿namespace UniSystem.Controls.News
 {
     public partial class NewsControl : UserControl
     {
         public NewsControl()
         {
             InitializeComponent();
+            buttonAddNews.Visible = LoggedUser.Role == Common.Role.Admin;
             ShowNews();
         }
 
         public void ShowNews()
         {
+            this.Controls.Clear();
+            this.Controls.Add(buttonAddNews);
+
             var news = Program.NewsService.GetNews();
 
             if (news.Count == 0)
@@ -58,6 +52,7 @@ namespace UniSystem.Controls.News
                     linkLabel.TabIndex = 2;
                     linkLabel.TabStop = true;
                     linkLabel.Text = "Прочети още";
+                    linkLabel.Click += (s, args) => ((Panel)this.Parent).Navigate($"news/{post.Id}");
 
                     date.AutoSize = true;
                     date.Location = new Point(18, 42);
@@ -73,9 +68,15 @@ namespace UniSystem.Controls.News
                     title.Text = post.Title;
 
                     y += 100;
+                    buttonAddNews.Location = new Point(618, y);
                     this.Controls.Add(panel);
                 }
             }
+        }
+
+        private void buttonAddNews_Click(object sender, EventArgs e)
+        {
+            ((Panel)this.Parent).Navigate("news/add");
         }
     }
 }

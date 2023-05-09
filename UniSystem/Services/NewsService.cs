@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
+using UniSystem.Controls.News;
 using UniSystem.Data;
 using UniSystem.Data.Entities;
 using UniSystem.Models;
@@ -31,6 +33,10 @@ namespace UniSystem.Services
             };
 
             this._context.News.Add(news);
+            Router.AddRoute($"news/{news.Id}", new NewsDetailControl
+            {
+                News = news
+            });
         }
     }
 }
