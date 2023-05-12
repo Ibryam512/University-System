@@ -10,14 +10,14 @@ namespace UniSystem.Services
 {
     public class GradeService
     {
-        private readonly UniSystemDbContext _context;
+        private readonly UniSystemDbContext context;
 
         public GradeService(UniSystemDbContext context)
         {
-            this._context = context ?? throw new ArgumentNullException(nameof(context));
+            this.context = context ?? throw new ArgumentNullException(nameof(context));
         }
 
-        public List<Grade> GetGrades(int studentId) => this._context.Grades.Where(x => x.StudentId == studentId);
+        public List<Grade> GetGrades(int studentId) => this.context.Grades.Where(x => x.StudentId == studentId);
 
         public void AddGrades(int studentId, Dictionary<string, double> grades)
         {
@@ -29,7 +29,7 @@ namespace UniSystem.Services
                     Value = info.Value,
                     StudentId = studentId
                 };
-                this._context.Grades.Add(grade);
+                this.context.Grades.Add(grade);
             }
         }
     }

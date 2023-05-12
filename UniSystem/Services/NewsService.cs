@@ -13,16 +13,16 @@ namespace UniSystem.Services
 {
     public class NewsService
     {
-        private readonly UniSystemDbContext _context;
+        private readonly UniSystemDbContext context;
 
         public NewsService(UniSystemDbContext context)
         {
-            this._context = context ?? throw new ArgumentNullException(nameof(context));
+            this.context = context ?? throw new ArgumentNullException(nameof(context));
         }
 
-        public List<News> GetNews() => this._context.News.ToList().OrderByDescending(x => x.CreationDate).ToList();
+        public List<News> GetNews() => this.context.News.ToList().OrderByDescending(x => x.CreationDate).ToList();
 
-        public News GetNews(int id) => this._context.News.SingleOrDefault(x => x.Id == id);
+        public News GetNews(int id) => this.context.News.SingleOrDefault(x => x.Id == id);
 
         public void AddNews(NewsBindingModel newsBindingModel)
         {
@@ -32,7 +32,7 @@ namespace UniSystem.Services
                 Content = newsBindingModel.Content
             };
 
-            this._context.News.Add(news);
+            this.context.News.Add(news);
             Router.AddRoute($"news/{news.Id}", new NewsDetailControl
             {
                 News = news

@@ -7,18 +7,18 @@ namespace UniSystem.Services
 {
     class StudentService
     {
-        private readonly UniSystemDbContext _context;
+        private readonly UniSystemDbContext context;
 
         public StudentService(UniSystemDbContext context)
         {
-            this._context = context ?? throw new ArgumentNullException(nameof(context));
+            this.context = context ?? throw new ArgumentNullException(nameof(context));
         }
 
-        public List<Student> GetStudents() => this._context.Students.ToList();
+        public List<Student> GetStudents() => this.context.Students.ToList();
 
-        public List<Student> GetStudents(Func<Student, bool> predicate) => this._context.Students.Where(predicate);
+        public List<Student> GetStudents(Func<Student, bool> predicate) => this.context.Students.Where(predicate);
 
-        public Student GetStudent(Func<Student, bool> predicate) => this._context.Students.SingleOrDefault(predicate);
+        public Student GetStudent(Func<Student, bool> predicate) => this.context.Students.SingleOrDefault(predicate);
 
         public void AddStudent(StudentBindingModel studentBindingModel)
         {
@@ -33,9 +33,10 @@ namespace UniSystem.Services
                 AverageGrade = studentBindingModel.Grades.Average(x => x.Value)
             };
 
-            this._context.Students.Add(student);
+            this.context.Students.Add(student);
 
             Program.GradeService.AddGrades(student.Id, studentBindingModel.Grades);
+            Program.AuthService.AddStudentAccount(student);
         }
     }
 }

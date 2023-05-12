@@ -5,6 +5,8 @@ namespace UniSystem.Data
 {
     public class DbSet<T> where T : BaseEntity, new()
     {
+        private const char space = (char)32;
+
         private string seperation = new string('-', 30);
         private string name = new T().GetType().Name.ToLower();
         private int id = 1;
@@ -131,7 +133,7 @@ namespace UniSystem.Data
         {
             try
             {
-                using (StreamReader reader = new StreamReader($"{name}.txt"))
+                using (StreamReader reader = new StreamReader($"Data/{name}.txt"))
                 {
                     string[] file = reader.ReadToEnd().Split(seperation, StringSplitOptions.RemoveEmptyEntries);
 
@@ -147,7 +149,7 @@ namespace UniSystem.Data
                             {
                                 continue;
                             }
-
+                            
                             string[] items = line.Split();
                             object value = GetValue(items[0], items[3]);
 
@@ -158,7 +160,7 @@ namespace UniSystem.Data
                             BindingFlags.Instance | BindingFlags.Public | BindingFlags.SetProperty,
                             Type.DefaultBinder, obj, new object[] { value });
                         }
-                        if (obj.Id != 0)
+                        if (obj.Id != 0)    
                             this.LocalAdd(obj);
                     }
                 }
@@ -172,6 +174,9 @@ namespace UniSystem.Data
 
         private object GetValue(string type, string value)
         {
+            value = value.Replace("(space)", " ");
+            value = value.Replace("(enter)", "\n");
+
             switch (type)
             {
                 case "System.String":
@@ -215,7 +220,7 @@ namespace UniSystem.Data
 
         private void SaveToFile(string obj)
         {
-            using (StreamWriter writer = new StreamWriter($"{name}.txt", true))
+            using (StreamWriter writer = new StreamWriter($"Data/{name}.txt", true))
             {
                 writer.WriteLine(obj); 
             }
@@ -223,7 +228,7 @@ namespace UniSystem.Data
 
         private void OverwriteFile()
         {
-            using (StreamWriter writer = new StreamWriter($"{name}.txt"))
+            using (StreamWriter writer = new StreamWriter($"Data/{name}.txt"))
             {
                 for (int i = 0; i < this.Count; i++)
                 {
@@ -240,7 +245,11 @@ namespace UniSystem.Data
 
             foreach (var prop in info)
             {
-                obj += $"{prop.PropertyType} {prop.Name} = {prop.GetValue(item)}\n";
+                string value = prop.GetValue(item).ToString();
+                value = value.Replace(" ", "(space)");
+                value = value.Replace(Environment.NewLine, "(enter)");
+
+                obj += $"{prop.PropertyType} {prop.Name} = {value}\n";
             }
 
             obj += seperation;

@@ -1,5 +1,5 @@
-﻿using System.Runtime.CompilerServices;
-using UniSystem.Controls;
+﻿using UniSystem.Controls;
+using UniSystem.Controls.Grades;
 using UniSystem.Controls.News;
 using UniSystem.Controls.Profile;
 
@@ -14,11 +14,9 @@ namespace UniSystem
             { "news", new NewsControl() },
             { "news/add", new AddNewsControl() },
             { "profile", new ProfileControl() },
-            { "grades", new StudentsControl() },
+            { "grades", new GradesControl() },
             { "students", new StudentsControl() }
         };
-
-        public static MainForm MainForm { get; private set; }
 
         static Router()
         {

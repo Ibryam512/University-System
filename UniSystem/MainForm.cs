@@ -1,4 +1,4 @@
-namespace UniSystem
+﻿namespace UniSystem
 {
     public partial class MainForm : Form
     {
@@ -16,7 +16,8 @@ namespace UniSystem
 
         private void MainForm_Load(object sender, EventArgs e)
         {
-            buttonStudents.Enabled = LoggedUser.Role == Common.Role.Admin;
+            buttonGradesAndStudents.Name = LoggedUser.Role == Common.Role.Student ? "buttonGrades" : "buttonStudents";
+            buttonGradesAndStudents.Text = LoggedUser.Role == Common.Role.Student ? "Оценки" : "Студенти";
         }
     }
 }

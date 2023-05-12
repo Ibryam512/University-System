@@ -16,7 +16,7 @@ namespace UniSystem.Controls.Profile
         {
             InitializeComponent();
         }
-
+            
         private void ProfileControl_Load(object sender, EventArgs e)
         {
             if (LoggedUser.Role == Common.Role.Admin)
@@ -35,7 +35,7 @@ namespace UniSystem.Controls.Profile
                 labelName.Text = "Име: " + LoggedUser.Name;
                 labelGender.Text = "Пол: " + (student.Gender == Common.Gender.Male ? "Мъж" : "Жена");
                 labelMobileNumber.Text = "Мобилен номер: " + student.MobileNumber;
-                labelAverageGrade.Text = "Среден успех: " + student.AverageGrade;
+                labelAverageGrade.Text = "Среден успех: " + student.AverageGrade.ToString("f2");
                 labelClass.Text = "Специалност: " + student.Class;
                 labelFacultyNumber.Text = "Факултетен номер: " + student.FacultyNumber;
             }

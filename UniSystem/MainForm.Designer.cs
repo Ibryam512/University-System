@@ -30,8 +30,7 @@
         {
             buttonNews = new Button();
             buttonProfile = new Button();
-            buttonGrades = new Button();
-            buttonStudents = new Button();
+            buttonGradesAndStudents = new Button();
             panelMain = new Panel();
             SuspendLayout();
             // 
@@ -45,7 +44,7 @@
             buttonNews.Location = new Point(0, 0);
             buttonNews.Margin = new Padding(2);
             buttonNews.Name = "buttonNews";
-            buttonNews.Size = new Size(370, 56);
+            buttonNews.Size = new Size(493, 56);
             buttonNews.TabIndex = 0;
             buttonNews.Text = "Новини";
             buttonNews.UseVisualStyleBackColor = false;
@@ -58,47 +57,30 @@
             buttonProfile.FlatAppearance.BorderSize = 0;
             buttonProfile.FlatStyle = FlatStyle.Flat;
             buttonProfile.Font = new Font("Segoe UI", 16F, FontStyle.Regular, GraphicsUnit.Point);
-            buttonProfile.Location = new Point(370, 0);
+            buttonProfile.Location = new Point(969, 0);
             buttonProfile.Margin = new Padding(2);
             buttonProfile.Name = "buttonProfile";
-            buttonProfile.Size = new Size(370, 56);
+            buttonProfile.Size = new Size(493, 56);
             buttonProfile.TabIndex = 1;
             buttonProfile.Text = "Профил";
             buttonProfile.UseVisualStyleBackColor = false;
             buttonProfile.Click += navigationButtonClick;
             // 
-            // buttonGrades
+            // buttonGradesAndStudents
             // 
-            buttonGrades.Anchor = AnchorStyles.None;
-            buttonGrades.BackColor = SystemColors.HotTrack;
-            buttonGrades.FlatAppearance.BorderSize = 0;
-            buttonGrades.FlatStyle = FlatStyle.Flat;
-            buttonGrades.Font = new Font("Segoe UI", 16F, FontStyle.Regular, GraphicsUnit.Point);
-            buttonGrades.Location = new Point(740, 0);
-            buttonGrades.Margin = new Padding(2);
-            buttonGrades.Name = "buttonGrades";
-            buttonGrades.Size = new Size(370, 56);
-            buttonGrades.TabIndex = 2;
-            buttonGrades.Text = "Оценки";
-            buttonGrades.UseVisualStyleBackColor = false;
-            buttonGrades.Click += navigationButtonClick;
-            // 
-            // buttonStudents
-            // 
-            buttonStudents.Anchor = AnchorStyles.None;
-            buttonStudents.AutoSize = true;
-            buttonStudents.BackColor = SystemColors.HotTrack;
-            buttonStudents.FlatAppearance.BorderSize = 0;
-            buttonStudents.FlatStyle = FlatStyle.Flat;
-            buttonStudents.Font = new Font("Segoe UI", 16F, FontStyle.Regular, GraphicsUnit.Point);
-            buttonStudents.Location = new Point(1110, 0);
-            buttonStudents.Margin = new Padding(2);
-            buttonStudents.Name = "buttonStudents";
-            buttonStudents.Size = new Size(370, 56);
-            buttonStudents.TabIndex = 3;
-            buttonStudents.Text = "Студенти";
-            buttonStudents.UseVisualStyleBackColor = false;
-            buttonStudents.Click += navigationButtonClick;
+            buttonGradesAndStudents.Anchor = AnchorStyles.None;
+            buttonGradesAndStudents.BackColor = SystemColors.HotTrack;
+            buttonGradesAndStudents.FlatAppearance.BorderSize = 0;
+            buttonGradesAndStudents.FlatStyle = FlatStyle.Flat;
+            buttonGradesAndStudents.Font = new Font("Segoe UI", 16F, FontStyle.Regular, GraphicsUnit.Point);
+            buttonGradesAndStudents.Location = new Point(486, 0);
+            buttonGradesAndStudents.Margin = new Padding(2);
+            buttonGradesAndStudents.Name = "buttonGradesAndStudents";
+            buttonGradesAndStudents.Size = new Size(493, 56);
+            buttonGradesAndStudents.TabIndex = 2;
+            buttonGradesAndStudents.Text = "Оценки";
+            buttonGradesAndStudents.UseVisualStyleBackColor = false;
+            buttonGradesAndStudents.Click += navigationButtonClick;
             // 
             // panelMain
             // 
@@ -113,9 +95,8 @@
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1462, 664);
-            Controls.Add(buttonStudents);
+            Controls.Add(buttonGradesAndStudents);
             Controls.Add(panelMain);
-            Controls.Add(buttonGrades);
             Controls.Add(buttonProfile);
             Controls.Add(buttonNews);
             Margin = new Padding(2);
@@ -123,15 +104,13 @@
             Text = "Form1";
             Load += MainForm_Load;
             ResumeLayout(false);
-            PerformLayout();
         }
 
         #endregion
 
         private Button buttonNews;
         private Button buttonProfile;
-        private Button buttonGrades;
-        private Button buttonStudents;
+        private Button buttonGradesAndStudents;
         private Panel panelMain;
     }
 }
