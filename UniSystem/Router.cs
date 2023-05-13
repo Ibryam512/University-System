@@ -20,10 +20,14 @@ namespace UniSystem
 
         static Router()
         {
+            GenerateRoutesForStudents();
             GenerateRoutesForNews();
 
-            ((AddStudentControl)routes["add"]).ButtonAddStudent.Click += (s, args) 
-                => ((StudentsControl)routes["home"]).RefreshTable();
+            ((AddStudentControl)routes["add"]).ButtonAddStudent.Click += (s, args) =>
+            {
+                ((StudentsControl)routes["students"]).RefreshTable();
+                GetPanelFromRoute("add").Navigate("students");
+            };
 
             ((AddNewsControl)routes["news/add"]).ButtonAddNews.Click += (s, args) =>
             {
@@ -58,6 +62,15 @@ namespace UniSystem
                 {
                     News = post
                 });
+            }
+        }
+
+        private static void GenerateRoutesForStudents()
+        {
+            var students = Program.StudentService.GetStudents();
+            foreach (var student in students)
+            {
+                AddRoute($"students/{student.FacultyNumber}", new StudentsControl());
             }
         }
     }

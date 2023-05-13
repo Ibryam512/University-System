@@ -6,9 +6,6 @@
         public string LastName { get; set; }
         public string Position { get; set; }
 
-        public string FullName
-        {
-            get => $"{FirstName} {LastName}";
-        }
+        public string FullName() => $"{FirstName} {LastName}";
     }
 }

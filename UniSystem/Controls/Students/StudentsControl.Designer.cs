@@ -48,6 +48,7 @@ namespace UniSystem.Controls
             labelFirstNameHeader = new Label();
             labelLastNameHeader = new Label();
             labelAverageGradeHeader = new Label();
+            buttonAddStudent = new Button();
             panelExample.SuspendLayout();
             SuspendLayout();
             // 
@@ -213,12 +214,23 @@ namespace UniSystem.Controls
             labelAverageGradeHeader.TabIndex = 11;
             labelAverageGradeHeader.Text = "Оценка";
             // 
+            // buttonAddStudent
+            // 
+            buttonAddStudent.Location = new Point(1278, 16);
+            buttonAddStudent.Name = "buttonAddStudent";
+            buttonAddStudent.Size = new Size(141, 34);
+            buttonAddStudent.TabIndex = 12;
+            buttonAddStudent.Text = "Добави студент";
+            buttonAddStudent.UseVisualStyleBackColor = true;
+            buttonAddStudent.Click += buttonAddStudent_Click;
+            // 
             // StudentsControl
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             AutoScroll = true;
             BackColor = SystemColors.Control;
+            Controls.Add(buttonAddStudent);
             Controls.Add(labelAverageGradeHeader);
             Controls.Add(labelLastNameHeader);
             Controls.Add(labelFirstNameHeader);
@@ -250,5 +262,6 @@ namespace UniSystem.Controls
         private Label labelFirstNameHeader;
         private Label labelLastNameHeader;
         private Label labelAverageGradeHeader;
+        private Button buttonAddStudent;
     }
 }

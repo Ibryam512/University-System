@@ -25,6 +25,7 @@ namespace UniSystem.Services
             var student = new Student
             {
                 FacultyNumber = studentBindingModel.FacultyNumber,
+                Class = studentBindingModel.Class,
                 EGN = studentBindingModel.EGN,
                 FirstName = studentBindingModel.FirstName,
                 LastName = studentBindingModel.LastName,
@@ -37,6 +38,12 @@ namespace UniSystem.Services
 
             Program.GradeService.AddGrades(student.Id, studentBindingModel.Grades);
             Program.AuthService.AddStudentAccount(student);
+        }
+
+        public void DeleteStudent(string facultyNumber)
+        {
+            var student = GetStudent(x => x.FacultyNumber == facultyNumber);
+            this.context.Students.Remove(student);
         }
     }
 }

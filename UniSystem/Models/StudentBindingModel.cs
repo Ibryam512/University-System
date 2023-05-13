@@ -5,6 +5,7 @@ namespace UniSystem.Models
     public class StudentBindingModel
     {
         public string FacultyNumber { get; set; }
+        public string Class { get; set; }
         public string EGN { get; set; }
         public string FirstName { get; set; }
         public string LastName { get; set; }

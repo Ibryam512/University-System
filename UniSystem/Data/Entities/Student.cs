@@ -13,9 +13,6 @@ namespace UniSystem.Data.Entities
         public string MobileNumber { get; set; }
         public double AverageGrade { get; set; }
 
-        public string FullName 
-        {
-            get => $"{FirstName} {LastName}"; 
-        }
+        public string FullName() => $"{FirstName} {LastName}"; 
     }
 }

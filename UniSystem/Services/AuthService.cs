@@ -27,8 +27,8 @@ namespace UniSystem.Services
                 ? "Студент"
                 : this.context.Admins.SingleOrDefault(x => x.Id == user.ProfileId).Position;
             LoggedUser.Name = (user.Role == Common.Role.Student)
-                ? this.context.Students.SingleOrDefault(x => x.Id == user.ProfileId).FullName
-                : this.context.Admins.SingleOrDefault(x => x.Id == user.ProfileId).FullName;
+                ? this.context.Students.SingleOrDefault(x => x.Id == user.ProfileId).FullName()
+                : this.context.Admins.SingleOrDefault(x => x.Id == user.ProfileId).FullName();
         }
 
         public void AddStudentAccount(Student student)

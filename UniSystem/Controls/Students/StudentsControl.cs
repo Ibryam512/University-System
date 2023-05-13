@@ -6,7 +6,7 @@ namespace UniSystem.Controls
 {
     public partial class StudentsControl : UserControl
     {
-        int y = 87;
+        const int y = 87;
 
         public StudentsControl()
         {
@@ -21,10 +21,11 @@ namespace UniSystem.Controls
             this.Controls.Add(labelFirstNameHeader);
             this.Controls.Add(labelLastNameHeader);
             this.Controls.Add(labelAverageGradeHeader);
+            this.Controls.Add(buttonAddStudent);
 
             var students = Program.StudentService.GetStudents();
             ComponentResourceManager resources = new ComponentResourceManager(typeof(StudentsControl));
-
+            int positionY = y;
             foreach (var student in students)
             {
                 Panel panelStudent = new Panel();
@@ -51,7 +52,7 @@ namespace UniSystem.Controls
                 panelStudent.Controls.Add(labelFirstName);
                 panelStudent.Controls.Add(labelFacultyNumber);
                 panelStudent.Cursor = Cursors.Hand;
-                panelStudent.Location = new Point(143, y);
+                panelStudent.Location = new Point(143, positionY);
                 panelStudent.Name = student.FacultyNumber;
                 panelStudent.Size = new Size(1160, 61);
                 panelStudent.TabIndex = 0;
@@ -132,7 +133,7 @@ namespace UniSystem.Controls
                 labelFacultyNumber.Text = student.FacultyNumber;
 
                 this.Controls.Add(panelStudent);
-                y += 70;
+                positionY += 70;
             }
         }
 
@@ -151,7 +152,20 @@ namespace UniSystem.Controls
         private void buttonDelete_Click(object sender, EventArgs e)
         {
             string facultyNumber = ((Button)sender).Name;
-            //delete student
+            bool delete = MessageBox.Show($"Сигурен ли си, че искаш да изтриеш студент с факултетен номер {facultyNumber}?", 
+                "Внимание", 
+                MessageBoxButtons.YesNo) == DialogResult.Yes;
+
+            if (delete)
+            {
+                Program.StudentService.DeleteStudent(facultyNumber);
+                RefreshTable();
+            }
+        }
+
+        private void buttonAddStudent_Click(object sender, EventArgs e)
+        {
+            ((Panel)this.Parent).Navigate("add");
         }
     }
 }

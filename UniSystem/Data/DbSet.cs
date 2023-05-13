@@ -75,6 +75,7 @@ namespace UniSystem.Data
             {
                 if (values[i].Id == item.Id)
                 {
+                    values[i] = null;
                     ReduceArray(i);
                     this.Count--;
                 }

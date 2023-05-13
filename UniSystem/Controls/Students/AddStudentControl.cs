@@ -4,7 +4,7 @@ namespace UniSystem.Controls
 {
     public partial class AddStudentControl : UserControl
     {
-        private int x = 167, y = 61;
+        private int x = 356, y = 61;
         private StudentBindingModel studentBindingModel;
 
         public Button ButtonAddStudent { get => buttonAddStudent; }
@@ -36,6 +36,7 @@ namespace UniSystem.Controls
             studentBindingModel = new StudentBindingModel();
 
             textBoxFacultyNumber.DataBindings.Add(new Binding("Text", studentBindingModel, "FacultyNumber"));
+            textBoxClass.DataBindings.Add(new Binding("Text", studentBindingModel, "Class"));
             textBoxEGN.DataBindings.Add(new Binding("Text", studentBindingModel, "EGN"));
             textBoxFirstName.DataBindings.Add(new Binding("Text", studentBindingModel, "FirstName"));
             textBoxLastName.DataBindings.Add(new Binding("Text", studentBindingModel, "LastName"));
