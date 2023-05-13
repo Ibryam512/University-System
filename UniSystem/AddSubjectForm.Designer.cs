@@ -39,7 +39,7 @@
             textBoxSubject.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
             textBoxSubject.Location = new Point(12, 23);
             textBoxSubject.Name = "textBoxSubject";
-            textBoxSubject.PlaceholderText = "Име";
+            textBoxSubject.PlaceholderText = "Предмет";
             textBoxSubject.Size = new Size(206, 34);
             textBoxSubject.TabIndex = 0;
             // 
@@ -73,7 +73,7 @@
             Controls.Add(numericUpDownGrade);
             Controls.Add(textBoxSubject);
             Name = "AddSubjectForm";
-            Text = "AddSubjectForm";
+            Text = "Добави оценка";
             ((System.ComponentModel.ISupportInitialize)numericUpDownGrade).EndInit();
             ResumeLayout(false);
             PerformLayout();

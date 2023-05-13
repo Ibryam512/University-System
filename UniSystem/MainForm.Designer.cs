@@ -101,7 +101,7 @@
             Controls.Add(buttonNews);
             Margin = new Padding(2);
             Name = "MainForm";
-            Text = "Form1";
+            Text = "Университетска система";
             Load += MainForm_Load;
             ResumeLayout(false);
         }
