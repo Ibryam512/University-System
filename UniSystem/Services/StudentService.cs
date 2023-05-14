@@ -1,4 +1,5 @@
 ﻿using UniSystem.Common;
+using UniSystem.Controls.Students;
 using UniSystem.Data;
 using UniSystem.Data.Entities;
 using UniSystem.Models;
@@ -35,15 +36,45 @@ namespace UniSystem.Services
             };
 
             this.context.Students.Add(student);
+            studentBindingModel.Id = student.Id;
 
-            Program.GradeService.AddGrades(student.Id, studentBindingModel.Grades);
+            if (studentBindingModel.Grades.Count > 0)
+                Program.GradeService.AddGrades(student.Id, studentBindingModel.Grades);
+
             Program.AuthService.AddStudentAccount(student);
+
+            Router.AddRoute($"edit/{student.FacultyNumber}", new EditStudentControl(studentBindingModel));
+        }
+
+        public void EditStudent(StudentBindingModel studentBindingModel)
+        {
+            var student = new Student
+            {
+                Id = studentBindingModel.Id,
+                FacultyNumber = studentBindingModel.FacultyNumber,
+                Class = studentBindingModel.Class,
+                EGN = studentBindingModel.EGN,
+                FirstName = studentBindingModel.FirstName,
+                LastName = studentBindingModel.LastName,
+                Gender = studentBindingModel.IsMale ? Gender.Male : Gender.Female,
+                MobileNumber = studentBindingModel.MobileNumber,
+                AverageGrade = studentBindingModel.AverageGrade
+            };
+
+            this.context.Students.Update(student);
+
+            if (studentBindingModel.Grades.Count > 0)
+                Program.GradeService.AddGrades(student.Id, studentBindingModel.Grades);
         }
 
         public void DeleteStudent(string facultyNumber)
         {
             var student = GetStudent(x => x.FacultyNumber == facultyNumber);
             this.context.Students.Remove(student);
+            Program.GradeService.DeleteGrades(student.Id);
+            Program.AuthService.DeleteStudentAccount(student.Id);
+            Router.RemoveRoute($"edit/{facultyNumber}");
+            Router.RemoveRoute($"students/{facultyNumber}");
         }
     }
 }

@@ -4,12 +4,12 @@ namespace UniSystem.Controls
 {
     public partial class AddStudentControl : UserControl
     {
-        private int x = 356, y = 61;
+        private int x = 356, y = 45;
         private StudentBindingModel studentBindingModel;
 
         public Button ButtonAddStudent { get => buttonAddStudent; }
 
-        public AddStudentControl()
+        public AddStudentControl(bool edit = false)
         {
             InitializeComponent();
         }
@@ -26,7 +26,7 @@ namespace UniSystem.Controls
                 labelSubject.Location = new Point(x - 127, y);
                 y += 50;
                 buttonAddSubject.Location = new Point(x, y);
-                groupBoxGrades.Controls.Add(labelSubject);
+                panelGrades.Controls.Add(labelSubject);
                 studentBindingModel.Grades.Add(addSubjectForm.Subject, addSubjectForm.Grade);
             }
         }

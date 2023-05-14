@@ -32,5 +32,15 @@ namespace UniSystem.Services
                 this.context.Grades.Add(grade);
             }
         }
+
+        public void DeleteGrades(int studentId)
+        {
+            var grades = GetGrades(studentId);
+
+            foreach (var grade in grades)
+            {
+                this.context.Grades.Remove(grade);
+            }
+        }
     }
 }

@@ -29,6 +29,7 @@ namespace UniSystem.Controls
                 var mainForm = new MainForm();
                 mainForm.Closed += (s, args) => ((Form)this.TopLevelControl).Close();
                 mainForm.Show();
+                mainForm.MainPanel.Navigate("news");
             }
             catch (Exception ex)
             {

@@ -2,6 +2,7 @@
 using UniSystem.Controls.Grades;
 using UniSystem.Controls.News;
 using UniSystem.Controls.Profile;
+using UniSystem.Controls.Students;
 
 namespace UniSystem
 {
@@ -9,7 +10,6 @@ namespace UniSystem
     {
         private static Dictionary<string, UserControl> routes = new Dictionary<string, UserControl>
         {
-            { "home", new StudentsControl() },
             { "add", new AddStudentControl() },
             { "news", new NewsControl() },
             { "news/add", new AddNewsControl() },
@@ -34,6 +34,18 @@ namespace UniSystem
                 ((NewsControl)routes["news"]).ShowNews();
                 GetPanelFromRoute("news/add").Navigate("news");
             };
+
+            foreach (var route in routes)
+            {
+                if (route.Key.Contains("edit"))
+                {
+                    ((EditStudentControl)routes[route.Key]).ButtonEditStudent.Click += (s, args) =>
+                    {
+                        ((StudentsControl)routes["students"]).RefreshTable();
+                        GetPanelFromRoute(route.Key).Navigate("students");
+                    };
+                }
+            }
         }
 
         public static void Navigate(this Panel panel, string route)
@@ -45,6 +57,20 @@ namespace UniSystem
         public static void AddRoute(string route, UserControl userControl)
         {
             routes.Add(route, userControl);
+
+            if (userControl is EditStudentControl)
+            {
+                ((EditStudentControl)routes[route]).ButtonEditStudent.Click += (s, args) =>
+                {
+                    ((StudentsControl)routes["students"]).RefreshTable();
+                    GetPanelFromRoute(route).Navigate("students");
+                };
+            }
+        }
+
+        public static void RemoveRoute(string key)
+        {
+            routes.Remove(key);
         }
 
         private static Panel GetPanelFromRoute(string route)
@@ -71,6 +97,18 @@ namespace UniSystem
             foreach (var student in students)
             {
                 AddRoute($"students/{student.FacultyNumber}", new StudentsControl());
+                AddRoute($"edit/{student.FacultyNumber}", new EditStudentControl(new Models.StudentBindingModel
+                {
+                    Id = student.Id,
+                    FacultyNumber = student.FacultyNumber,
+                    EGN = student.EGN,
+                    FirstName = student.FirstName,
+                    LastName = student.LastName,
+                    Class = student.Class,
+                    MobileNumber = student.MobileNumber,
+                    IsMale = student.Gender == Common.Gender.Male,
+                    AverageGrade = student.AverageGrade
+                }));
             }
         }
     }

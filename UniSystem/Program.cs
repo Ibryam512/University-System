@@ -16,16 +16,23 @@ namespace UniSystem
         [STAThread]
         static void Main()
         {
-            var context = new UniSystemDbContext();
-            StudentService = new StudentService(context);
-            GradeService = new GradeService(context);
-            AuthService = new AuthService(context);
-            NewsService = new NewsService(context);
-            Seeder.Seed(context);
-            // To customize application configuration such as set high DPI settings or default font,
-            // see https://aka.ms/applicationconfiguration.
-            ApplicationConfiguration.Initialize();
-            Application.Run(new AuthForm());
+            try
+            {
+                var context = new UniSystemDbContext();
+                StudentService = new StudentService(context);
+                GradeService = new GradeService(context);
+                AuthService = new AuthService(context);
+                NewsService = new NewsService(context);
+                Seeder.Seed(context);
+                // To customize application configuration such as set high DPI settings or default font,
+                // see https://aka.ms/applicationconfiguration.
+                ApplicationConfiguration.Initialize();
+                Application.Run(new AuthForm());
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
     }
 }

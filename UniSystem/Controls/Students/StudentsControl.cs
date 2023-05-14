@@ -1,12 +1,13 @@
 ﻿using System.ComponentModel;
-using System.Resources;
-using UniSystem.Properties;
+using System.Security.Permissions;
+using UniSystem.Data.Entities;
 
 namespace UniSystem.Controls
 {
     public partial class StudentsControl : UserControl
     {
-        const int y = 87;
+        private const int y = 87;
+        private bool facultyNumberAsc = true, firstNameAsc = true, lastNameAsc = true, gradeAsc = true;
 
         public StudentsControl()
         {
@@ -14,7 +15,7 @@ namespace UniSystem.Controls
             RefreshTable();
         }
 
-        public void RefreshTable()
+        public void RefreshTable(int type = 0, bool asc = false)
         {
             this.Controls.Clear();
             this.Controls.Add(labelFacultyNumberHeader);
@@ -24,6 +25,7 @@ namespace UniSystem.Controls
             this.Controls.Add(buttonAddStudent);
 
             var students = Program.StudentService.GetStudents();
+            students = SortStudents(students, type, asc);
             ComponentResourceManager resources = new ComponentResourceManager(typeof(StudentsControl));
             int positionY = y;
             foreach (var student in students)
@@ -137,6 +139,31 @@ namespace UniSystem.Controls
             }
         }
 
+        private List<Student> SortStudents(List<Student> students, int type, bool asc)
+        {
+            switch (type)
+            {
+                case 0 when asc:
+                    return students.OrderBy(student => student.FacultyNumber).ToList();
+                case 0 when !asc:
+                    return students.OrderByDescending(student => student.FacultyNumber).ToList();
+                case 1 when asc:
+                    return students.OrderBy(student => student.FirstName).ToList();
+                case 1 when !asc:
+                    return students.OrderByDescending(student => student.FirstName).ToList();
+                case 2 when asc:
+                    return students.OrderBy(student => student.LastName).ToList();
+                case 2 when !asc:
+                    return students.OrderByDescending(student => student.LastName).ToList();
+                case 3 when asc:
+                    return students.OrderBy(student => student.AverageGrade).ToList();
+                case 3 when !asc:
+                    return students.OrderByDescending(student => student.AverageGrade).ToList();
+                default:
+                    return students;
+            }
+        }
+
         private void panelDoubleClick(object sender, EventArgs e)
         {
             string facultyNumber = ((Panel)sender).Name;
@@ -146,14 +173,14 @@ namespace UniSystem.Controls
         private void buttonEdit_Click(object sender, EventArgs e)
         {
             string facultyNumber = ((Button)sender).Name;
-            //edit student
+            ((Panel)this.Parent).Navigate($"edit/{facultyNumber}");
         }
 
         private void buttonDelete_Click(object sender, EventArgs e)
         {
             string facultyNumber = ((Button)sender).Name;
-            bool delete = MessageBox.Show($"Сигурен ли си, че искаш да изтриеш студент с факултетен номер {facultyNumber}?", 
-                "Внимание", 
+            bool delete = MessageBox.Show($"Сигурен ли си, че искаш да изтриеш студент с факултетен номер {facultyNumber}?",
+                "Внимание",
                 MessageBoxButtons.YesNo) == DialogResult.Yes;
 
             if (delete)
@@ -166,6 +193,30 @@ namespace UniSystem.Controls
         private void buttonAddStudent_Click(object sender, EventArgs e)
         {
             ((Panel)this.Parent).Navigate("add");
+        }
+
+        private void labelFacultyNumberHeader_Click(object sender, EventArgs e)
+        {
+            facultyNumberAsc = !facultyNumberAsc;
+            RefreshTable(0, facultyNumberAsc);
+        }
+
+        private void labelFirstNameHeader_Click(object sender, EventArgs e)
+        {
+            firstNameAsc = !firstNameAsc;
+            RefreshTable(1, firstNameAsc);
+        }
+
+        private void labelLastNameHeader_Click(object sender, EventArgs e)
+        {
+            lastNameAsc = !lastNameAsc;
+            RefreshTable(2, lastNameAsc);
+        }
+
+        private void labelAverageGradeHeader_Click(object sender, EventArgs e)
+        {
+            gradeAsc = !gradeAsc;
+            RefreshTable(3, gradeAsc);
         }
     }
 }

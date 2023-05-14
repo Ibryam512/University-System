@@ -2,6 +2,8 @@
 {
     public partial class MainForm : Form
     {
+        public Panel MainPanel { get => this.panelMain; }
+
         public MainForm()
         {
             InitializeComponent();

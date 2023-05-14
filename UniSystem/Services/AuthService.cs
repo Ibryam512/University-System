@@ -43,5 +43,12 @@ namespace UniSystem.Services
 
             this.context.Users.Add(user);
         }
+
+        public void DeleteStudentAccount(int studentId)
+        {
+            var studentAccount = this.context.Users.SingleOrDefault(x => x.ProfileId == studentId && x.Role == Common.Role.Student);
+            this.context.Users.Remove(studentAccount);
+        }
+
     }
 }

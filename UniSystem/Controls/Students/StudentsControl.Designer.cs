@@ -183,6 +183,7 @@ namespace UniSystem.Controls
             labelFacultyNumberHeader.Size = new Size(139, 32);
             labelFacultyNumberHeader.TabIndex = 8;
             labelFacultyNumberHeader.Text = "Фак. номер";
+            labelFacultyNumberHeader.Click += labelFacultyNumberHeader_Click;
             // 
             // labelFirstNameHeader
             // 
@@ -193,6 +194,7 @@ namespace UniSystem.Controls
             labelFirstNameHeader.Size = new Size(62, 32);
             labelFirstNameHeader.TabIndex = 9;
             labelFirstNameHeader.Text = "Име";
+            labelFirstNameHeader.Click += labelFirstNameHeader_Click;
             // 
             // labelLastNameHeader
             // 
@@ -203,6 +205,7 @@ namespace UniSystem.Controls
             labelLastNameHeader.Size = new Size(113, 32);
             labelLastNameHeader.TabIndex = 10;
             labelLastNameHeader.Text = "Фамилия";
+            labelLastNameHeader.Click += labelLastNameHeader_Click;
             // 
             // labelAverageGradeHeader
             // 
@@ -213,6 +216,7 @@ namespace UniSystem.Controls
             labelAverageGradeHeader.Size = new Size(97, 32);
             labelAverageGradeHeader.TabIndex = 11;
             labelAverageGradeHeader.Text = "Оценка";
+            labelAverageGradeHeader.Click += labelAverageGradeHeader_Click;
             // 
             // buttonAddStudent
             // 

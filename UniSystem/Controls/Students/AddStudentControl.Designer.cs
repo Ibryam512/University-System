@@ -40,8 +40,10 @@
             buttonAddSubject = new Button();
             buttonAddStudent = new Button();
             textBoxClass = new TextBox();
+            panelGrades = new Panel();
             groupBoxGender.SuspendLayout();
             groupBoxGrades.SuspendLayout();
+            panelGrades.SuspendLayout();
             SuspendLayout();
             // 
             // textBoxFacultyNumber
@@ -125,7 +127,7 @@
             // 
             // groupBoxGrades
             // 
-            groupBoxGrades.Controls.Add(buttonAddSubject);
+            groupBoxGrades.Controls.Add(panelGrades);
             groupBoxGrades.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
             groupBoxGrades.Location = new Point(537, 31);
             groupBoxGrades.Name = "groupBoxGrades";
@@ -136,7 +138,7 @@
             // 
             // buttonAddSubject
             // 
-            buttonAddSubject.Location = new Point(356, 54);
+            buttonAddSubject.Location = new Point(356, 30);
             buttonAddSubject.Name = "buttonAddSubject";
             buttonAddSubject.Size = new Size(149, 38);
             buttonAddSubject.TabIndex = 0;
@@ -164,7 +166,15 @@
             textBoxClass.Size = new Size(313, 34);
             textBoxClass.TabIndex = 8;
             // 
-            // AddStudentControl
+            // panelGrades
+            // 
+            panelGrades.Controls.Add(buttonAddSubject);
+            panelGrades.Location = new Point(6, 24);
+            panelGrades.Name = "panelGrades";
+            panelGrades.Size = new Size(880, 393);
+            panelGrades.TabIndex = 1;
+            // 
+            // EditStudentControl
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
@@ -177,12 +187,13 @@
             Controls.Add(textBoxFirstName);
             Controls.Add(textBoxEGN);
             Controls.Add(textBoxFacultyNumber);
-            Name = "AddStudentControl";
+            Name = "EditStudentControl";
             Size = new Size(1461, 607);
             Load += AddStudentControl_Load;
             groupBoxGender.ResumeLayout(false);
             groupBoxGender.PerformLayout();
             groupBoxGrades.ResumeLayout(false);
+            panelGrades.ResumeLayout(false);
             ResumeLayout(false);
             PerformLayout();
         }
@@ -201,5 +212,6 @@
         private Button buttonAddSubject;
         private Button buttonAddStudent;
         private TextBox textBoxClass;
+        private Panel panelGrades;
     }
 }
