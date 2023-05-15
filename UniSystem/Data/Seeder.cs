@@ -10,7 +10,6 @@ namespace UniSystem.Data
         {
             AddAdmins(context);
             AddStudents(context);
-
         }
 
         private static void AddAdmins(UniSystemDbContext context)
@@ -44,6 +43,7 @@ namespace UniSystem.Data
                     EGN = "0000000000",
                     FirstName = "Ибрям",
                     LastName = "Ибрямов",
+                    Class = "Софтуерни технологии и дизайн",
                     MobileNumber = "+359898989898",
                     IsMale = true,
                     Grades = new Dictionary<string, double>

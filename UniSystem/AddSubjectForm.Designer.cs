@@ -45,12 +45,13 @@
             // 
             // numericUpDownGrade
             // 
+            numericUpDownGrade.DecimalPlaces = 2;
             numericUpDownGrade.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
             numericUpDownGrade.Location = new Point(297, 24);
             numericUpDownGrade.Name = "numericUpDownGrade";
             numericUpDownGrade.Size = new Size(206, 34);
             numericUpDownGrade.TabIndex = 1;
-            numericUpDownGrade.Value = new decimal(new int[] { 3, 0, 0, 65536 });
+            numericUpDownGrade.Value = new decimal(new int[] { 20, 0, 0, 65536 });
             // 
             // buttonAddSubject
             // 

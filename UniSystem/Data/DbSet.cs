@@ -9,10 +9,12 @@ namespace UniSystem.Data
 
         private string seperation = new string('-', 30);
         private string name = new T().GetType().Name.ToLower();
+        private string folderName = "Data";
         private int id = 1;
 
         private T[] values;
         public int Count { get; private set; }
+        private string FullPath { get => $"{folderName}/{name}.txt"; }
 
         public T this[int index]
         { 
@@ -134,7 +136,7 @@ namespace UniSystem.Data
         {
             try
             {
-                using (StreamReader reader = new StreamReader($"Data/{name}.txt"))
+                using (StreamReader reader = new StreamReader(FullPath))
                 {
                     string[] file = reader.ReadToEnd().Split(seperation, StringSplitOptions.RemoveEmptyEntries);
 
@@ -166,11 +168,14 @@ namespace UniSystem.Data
                     }
                 }
             }
+            catch (DirectoryNotFoundException)
+            {
+                Directory.CreateDirectory(folderName);
+            }
             catch (FileNotFoundException)
             {
-                //do nothing
+                File.Create(FullPath).Close();
             }
-            
         }
 
         private object GetValue(string type, string value)

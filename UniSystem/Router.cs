@@ -96,19 +96,24 @@ namespace UniSystem
             var students = Program.StudentService.GetStudents();
             foreach (var student in students)
             {
-                AddRoute($"students/{student.FacultyNumber}", new StudentsControl());
-                AddRoute($"edit/{student.FacultyNumber}", new EditStudentControl(new Models.StudentBindingModel
+                if (!routes.ContainsKey($"students/{student.FacultyNumber}"))
+                    AddRoute($"students/{student.FacultyNumber}", new StudentsControl());
+
+                if (!routes.ContainsKey($"students/{student.FacultyNumber}"))
                 {
-                    Id = student.Id,
-                    FacultyNumber = student.FacultyNumber,
-                    EGN = student.EGN,
-                    FirstName = student.FirstName,
-                    LastName = student.LastName,
-                    Class = student.Class,
-                    MobileNumber = student.MobileNumber,
-                    IsMale = student.Gender == Common.Gender.Male,
-                    AverageGrade = student.AverageGrade
-                }));
+                    AddRoute($"edit/{student.FacultyNumber}", new EditStudentControl(new Models.StudentBindingModel
+                    {
+                        Id = student.Id,
+                        FacultyNumber = student.FacultyNumber,
+                        EGN = student.EGN,
+                        FirstName = student.FirstName,
+                        LastName = student.LastName,
+                        Class = student.Class,
+                        MobileNumber = student.MobileNumber,
+                        IsMale = student.Gender == Common.Gender.Male,
+                        AverageGrade = student.AverageGrade
+                    }));
+                }
             }
         }
     }
