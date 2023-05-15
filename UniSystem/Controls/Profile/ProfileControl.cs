@@ -16,7 +16,7 @@ namespace UniSystem.Controls.Profile
         {
             InitializeComponent();
         }
-            
+
         private void ProfileControl_Load(object sender, EventArgs e)
         {
             if (LoggedUser.Role == Common.Role.Admin)

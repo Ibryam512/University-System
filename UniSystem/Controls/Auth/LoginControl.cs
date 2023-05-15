@@ -22,6 +22,12 @@ namespace UniSystem.Controls
 
         private void buttonLogin_Click(object sender, EventArgs e)
         {
+            textBoxEmail.Validate();
+            textBoxPassword.Validate();
+
+            if (textBoxEmail.CausesValidation || textBoxPassword.CausesValidation)
+                return;
+
             try
             {
                 Program.AuthService.Login(loginBindingModel);

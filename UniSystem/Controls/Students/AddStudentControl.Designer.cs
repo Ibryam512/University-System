@@ -37,10 +37,10 @@
             radioButtonMale = new RadioButton();
             textBoxMobileNumber = new TextBox();
             groupBoxGrades = new GroupBox();
+            panelGrades = new Panel();
             buttonAddSubject = new Button();
             buttonAddStudent = new Button();
             textBoxClass = new TextBox();
-            panelGrades = new Panel();
             groupBoxGender.SuspendLayout();
             groupBoxGrades.SuspendLayout();
             panelGrades.SuspendLayout();
@@ -136,6 +136,15 @@
             groupBoxGrades.TabStop = false;
             groupBoxGrades.Text = "Оценки";
             // 
+            // panelGrades
+            // 
+            panelGrades.AutoScroll = true;
+            panelGrades.Controls.Add(buttonAddSubject);
+            panelGrades.Location = new Point(6, 24);
+            panelGrades.Name = "panelGrades";
+            panelGrades.Size = new Size(880, 393);
+            panelGrades.TabIndex = 1;
+            // 
             // buttonAddSubject
             // 
             buttonAddSubject.Location = new Point(356, 30);
@@ -166,15 +175,7 @@
             textBoxClass.Size = new Size(313, 34);
             textBoxClass.TabIndex = 8;
             // 
-            // panelGrades
-            // 
-            panelGrades.Controls.Add(buttonAddSubject);
-            panelGrades.Location = new Point(6, 24);
-            panelGrades.Name = "panelGrades";
-            panelGrades.Size = new Size(880, 393);
-            panelGrades.TabIndex = 1;
-            // 
-            // EditStudentControl
+            // AddStudentControl
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
@@ -187,7 +188,7 @@
             Controls.Add(textBoxFirstName);
             Controls.Add(textBoxEGN);
             Controls.Add(textBoxFacultyNumber);
-            Name = "EditStudentControl";
+            Name = "AddStudentControl";
             Size = new Size(1461, 607);
             Load += AddStudentControl_Load;
             groupBoxGender.ResumeLayout(false);

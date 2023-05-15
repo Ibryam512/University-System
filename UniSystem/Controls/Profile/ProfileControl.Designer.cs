@@ -64,7 +64,7 @@
             labelClass.Font = new Font("Segoe UI", 18F, FontStyle.Regular, GraphicsUnit.Point);
             labelClass.Location = new Point(45, 390);
             labelClass.Name = "labelClass";
-            labelClass.Size = new Size(404, 41);
+            labelClass.Size = new Size(204, 41);
             labelClass.TabIndex = 2;
             labelClass.Text = "Специалност:";
             // 

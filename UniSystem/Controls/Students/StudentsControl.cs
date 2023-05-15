@@ -167,7 +167,7 @@ namespace UniSystem.Controls
         private void panelDoubleClick(object sender, EventArgs e)
         {
             string facultyNumber = ((Panel)sender).Name;
-            //show info for student
+            ((Panel)this.Parent).Navigate($"students/{facultyNumber}");
         }
 
         private void buttonEdit_Click(object sender, EventArgs e)

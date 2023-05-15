@@ -43,7 +43,9 @@ namespace UniSystem.Services
 
             Program.AuthService.AddStudentAccount(student);
 
+            studentBindingModel.Grades = new Dictionary<string, double>();
             Router.AddRoute($"edit/{student.FacultyNumber}", new EditStudentControl(studentBindingModel));
+            Router.AddRoute($"students/{student.FacultyNumber}", new StudentDetailsControl(studentBindingModel.FacultyNumber));
         }
 
         public void EditStudent(StudentBindingModel studentBindingModel)
@@ -57,9 +59,10 @@ namespace UniSystem.Services
                 FirstName = studentBindingModel.FirstName,
                 LastName = studentBindingModel.LastName,
                 Gender = studentBindingModel.IsMale ? Gender.Male : Gender.Female,
-                MobileNumber = studentBindingModel.MobileNumber,
-                AverageGrade = studentBindingModel.AverageGrade
+                MobileNumber = studentBindingModel.MobileNumber
             };
+
+            student.AverageGrade = CalculateAverageGrade(studentBindingModel.Id, studentBindingModel.Grades);
 
             this.context.Students.Update(student);
 
@@ -75,6 +78,12 @@ namespace UniSystem.Services
             Program.AuthService.DeleteStudentAccount(student.Id);
             Router.RemoveRoute($"edit/{facultyNumber}");
             Router.RemoveRoute($"students/{facultyNumber}");
+        }
+
+        private double CalculateAverageGrade(int studentId, Dictionary<string, double> newGrades)
+        {
+            var grades = Program.GradeService.GetGrades(studentId);
+            return (grades.Sum(x => x.Value) + newGrades.Sum(x => x.Value)) / (grades.Count + newGrades.Count);
         }
     }
 }
