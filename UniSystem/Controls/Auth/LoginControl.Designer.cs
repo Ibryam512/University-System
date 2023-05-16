@@ -33,6 +33,7 @@
             textBoxEmail = new TextBox();
             label1 = new Label();
             labelLoginLink = new Label();
+            buttonHelp = new Button();
             SuspendLayout();
             // 
             // buttonLogin
@@ -91,11 +92,24 @@
             labelLoginLink.TabIndex = 8;
             labelLoginLink.Text = "Нямаш акаунт? Регистрирай се!";
             // 
+            // buttonHelp
+            // 
+            buttonHelp.FlatAppearance.BorderSize = 0;
+            buttonHelp.FlatStyle = FlatStyle.Flat;
+            buttonHelp.Location = new Point(410, 14);
+            buttonHelp.Name = "buttonHelp";
+            buttonHelp.Size = new Size(94, 29);
+            buttonHelp.TabIndex = 9;
+            buttonHelp.Text = "Помощ";
+            buttonHelp.UseVisualStyleBackColor = true;
+            buttonHelp.Click += buttonHelp_Click;
+            // 
             // LoginControl
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(217, 217, 217);
+            Controls.Add(buttonHelp);
             Controls.Add(labelLoginLink);
             Controls.Add(buttonLogin);
             Controls.Add(textBoxPassword);
@@ -115,5 +129,6 @@
         private System.Windows.Forms.TextBox textBoxEmail;
         private System.Windows.Forms.Label label1;
         private Label labelLoginLink;
+        private Button buttonHelp;
     }
 }

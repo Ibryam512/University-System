@@ -22,10 +22,13 @@ namespace UniSystem.Controls
 
         private void buttonLogin_Click(object sender, EventArgs e)
         {
-            textBoxEmail.Validate();
-            textBoxPassword.Validate();
+            bool textBoxEmailValidated = textBoxEmail.Validate();
+            bool textBoxPasswordValidated = textBoxPassword.Validate();
 
-            if (textBoxEmail.CausesValidation || textBoxPassword.CausesValidation)
+            if (!textBoxEmailValidated)
+                return;
+
+            if (!textBoxPasswordValidated)
                 return;
 
             try
@@ -33,7 +36,19 @@ namespace UniSystem.Controls
                 Program.AuthService.Login(loginBindingModel);
                 ((Form)this.TopLevelControl).Hide();
                 var mainForm = new MainForm();
-                mainForm.Closed += (s, args) => ((Form)this.TopLevelControl).Close();
+
+                mainForm.Closed += (s, args) =>
+                {
+                    try
+                    {
+                        ((Form)this.TopLevelControl).Close();
+                    }
+                    catch (StackOverflowException)
+                    {
+                        Environment.Exit(0);
+                    }
+                };
+
                 mainForm.Show();
                 mainForm.MainPanel.Navigate("news");
             }
@@ -41,6 +56,11 @@ namespace UniSystem.Controls
             {
                 MessageBox.Show(ex.Message);
             }
+        }
+
+        private void buttonHelp_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("За вход на студенти имейлът е stu{фак. номер}@uni.bg, а паролата е ЕГН.", "Информация", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
     }
 }

@@ -31,6 +31,14 @@ namespace UniSystem.Controls.News
 
         private void buttonAdd_Click(object sender, EventArgs e)
         {
+            bool textBoxTitleValidated = textBoxTitle.Validate(1, 50, "Заглавието трябва да е между 1 и 50 символа");
+            bool textBoxContentValidated = textBoxContent.Validate(1, 500, "Текстът трябва да е междъ 1 и 500 символа");
+
+            if (!textBoxTitleValidated || !textBoxContentValidated) 
+            {
+                return;
+            }
+
             Program.NewsService.AddNews(this.newsBindingModel);
         }
     }

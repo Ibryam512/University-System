@@ -36,6 +36,7 @@
             labelAverageGrade = new Label();
             labelGender = new Label();
             labelMobileNumber = new Label();
+            buttonLogout = new Button();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             SuspendLayout();
             // 
@@ -108,10 +109,22 @@
             labelMobileNumber.TabIndex = 6;
             labelMobileNumber.Text = "Мобилен номер:";
             // 
+            // buttonLogout
+            // 
+            buttonLogout.Font = new Font("Segoe UI", 16F, FontStyle.Regular, GraphicsUnit.Point);
+            buttonLogout.Location = new Point(1250, 526);
+            buttonLogout.Name = "buttonLogout";
+            buttonLogout.Size = new Size(172, 53);
+            buttonLogout.TabIndex = 7;
+            buttonLogout.Text = "Изход";
+            buttonLogout.UseVisualStyleBackColor = true;
+            buttonLogout.Click += buttonLogout_Click;
+            // 
             // ProfileControl
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
+            Controls.Add(buttonLogout);
             Controls.Add(labelMobileNumber);
             Controls.Add(labelGender);
             Controls.Add(labelAverageGrade);
@@ -136,5 +149,6 @@
         private Label labelAverageGrade;
         private Label labelGender;
         private Label labelMobileNumber;
+        private Button buttonLogout;
     }
 }

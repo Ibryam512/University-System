@@ -48,6 +48,8 @@
             numericUpDownGrade.DecimalPlaces = 2;
             numericUpDownGrade.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
             numericUpDownGrade.Location = new Point(297, 24);
+            numericUpDownGrade.Maximum = new decimal(new int[] { 6, 0, 0, 0 });
+            numericUpDownGrade.Minimum = new decimal(new int[] { 2, 0, 0, 0 });
             numericUpDownGrade.Name = "numericUpDownGrade";
             numericUpDownGrade.Size = new Size(206, 34);
             numericUpDownGrade.TabIndex = 1;

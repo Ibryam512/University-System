@@ -46,6 +46,11 @@ namespace UniSystem.Controls
 
         private void buttonAddStudent_Click(object sender, EventArgs e)
         {
+            if (studentBindingModel.Grades == null || studentBindingModel.Grades.Count == 0)
+            {
+                studentBindingModel.Grades.Add("", 0);
+            }
+
             Program.StudentService.AddStudent(studentBindingModel);
         }
     }

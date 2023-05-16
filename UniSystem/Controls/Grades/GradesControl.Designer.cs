@@ -37,6 +37,7 @@
             AutoScroll = true;
             Name = "GradesControl";
             Size = new Size(1461, 607);
+            Load += GradesControl_Load;
             ResumeLayout(false);
         }
 

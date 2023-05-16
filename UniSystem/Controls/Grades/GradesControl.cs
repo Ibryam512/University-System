@@ -13,6 +13,8 @@
 
         public void LoadGrades()
         {
+            this.Controls.Clear();
+            y = 70;
             var grades = Program.GradeService.GetGrades(LoggedUser.Id);
 
             foreach (var grade in grades)
@@ -54,6 +56,11 @@
                 this.Controls.Add(panelGrade);
                 y += 100;
             }
+        }
+
+        private void GradesControl_Load(object sender, EventArgs e)
+        {
+            LoadGrades();
         }
     }
 }

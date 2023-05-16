@@ -66,7 +66,7 @@
             // buttonAdd
             // 
             buttonAdd.Font = new Font("Segoe UI", 16F, FontStyle.Regular, GraphicsUnit.Point);
-            buttonAdd.Location = new Point(624, 500);
+            buttonAdd.Location = new Point(624, 527);
             buttonAdd.Name = "buttonAdd";
             buttonAdd.Size = new Size(277, 71);
             buttonAdd.TabIndex = 3;

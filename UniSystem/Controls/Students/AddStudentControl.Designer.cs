@@ -62,7 +62,7 @@
             textBoxEGN.Name = "textBoxEGN";
             textBoxEGN.PlaceholderText = "ЕГН";
             textBoxEGN.Size = new Size(313, 34);
-            textBoxEGN.TabIndex = 1;
+            textBoxEGN.TabIndex = 2;
             // 
             // textBoxLastName
             // 
@@ -71,7 +71,7 @@
             textBoxLastName.Name = "textBoxLastName";
             textBoxLastName.PlaceholderText = "Фамилия";
             textBoxLastName.Size = new Size(313, 34);
-            textBoxLastName.TabIndex = 3;
+            textBoxLastName.TabIndex = 4;
             // 
             // textBoxFirstName
             // 
@@ -80,7 +80,7 @@
             textBoxFirstName.Name = "textBoxFirstName";
             textBoxFirstName.PlaceholderText = "Име";
             textBoxFirstName.Size = new Size(313, 34);
-            textBoxFirstName.TabIndex = 2;
+            textBoxFirstName.TabIndex = 3;
             // 
             // groupBoxGender
             // 
@@ -90,7 +90,7 @@
             groupBoxGender.Location = new Point(40, 359);
             groupBoxGender.Name = "groupBoxGender";
             groupBoxGender.Size = new Size(313, 151);
-            groupBoxGender.TabIndex = 4;
+            groupBoxGender.TabIndex = 6;
             groupBoxGender.TabStop = false;
             groupBoxGender.Text = "Пол";
             // 
@@ -150,7 +150,7 @@
             buttonAddSubject.Location = new Point(356, 30);
             buttonAddSubject.Name = "buttonAddSubject";
             buttonAddSubject.Size = new Size(149, 38);
-            buttonAddSubject.TabIndex = 0;
+            buttonAddSubject.TabIndex = 7;
             buttonAddSubject.Text = "Добави предмет";
             buttonAddSubject.UseVisualStyleBackColor = true;
             buttonAddSubject.Click += buttonAddSubject_Click;
@@ -161,7 +161,7 @@
             buttonAddStudent.Location = new Point(537, 495);
             buttonAddStudent.Name = "buttonAddStudent";
             buttonAddStudent.Size = new Size(174, 57);
-            buttonAddStudent.TabIndex = 7;
+            buttonAddStudent.TabIndex = 8;
             buttonAddStudent.Text = "Добави студент";
             buttonAddStudent.UseVisualStyleBackColor = true;
             buttonAddStudent.Click += buttonAddStudent_Click;
@@ -173,7 +173,7 @@
             textBoxClass.Name = "textBoxClass";
             textBoxClass.PlaceholderText = "Специалност";
             textBoxClass.Size = new Size(313, 34);
-            textBoxClass.TabIndex = 8;
+            textBoxClass.TabIndex = 1;
             // 
             // AddStudentControl
             // 

@@ -7,6 +7,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using UniSystem.Common;
+using UniSystem.Controls.Grades;
 
 namespace UniSystem.Controls.Profile
 {
@@ -39,6 +41,32 @@ namespace UniSystem.Controls.Profile
                 labelClass.Text = "Специалност: " + student.Class;
                 labelFacultyNumber.Text = "Факултетен номер: " + student.FacultyNumber;
             }
+        }
+
+        private void buttonLogout_Click(object sender, EventArgs e)
+        {   
+            ((Form)this.TopLevelControl).Hide();
+            AuthForm authForm = new AuthForm();
+
+            authForm.Closed += (s, args) =>
+            {
+                try
+                {
+                    ((Form)this.TopLevelControl).Close();
+                }
+                catch (StackOverflowException)
+                {
+                    Environment.Exit(0);
+                }
+            };
+
+            Router.RemoveRoute("profile");
+            Router.AddRoute("profile", new ProfileControl());
+
+            Router.RemoveRoute("grades");
+            Router.AddRoute("grades", new GradesControl());
+
+            authForm.Show();
         }
     }
 }

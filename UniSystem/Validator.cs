@@ -4,28 +4,30 @@ namespace UniSystem
 {
     public static class Validator
     {
-        private static Dictionary<TextBox, Label> validateMessages = new Dictionary<TextBox, Label>();
-
-       public static void Validate(this TextBox textBox, int minLength = -1, int maxLength = -1, string customMessage = "")
+        private static Dictionary<string, Label> validateMessages = new Dictionary<string, Label>();
+        
+       public static bool Validate(this TextBox textBox, int minLength = -1, int maxLength = -1, string customMessage = "")
         {
             if (string.IsNullOrWhiteSpace(textBox.Text)) 
             {
                 ShowMessage("Попълни полето", textBox);
-                textBox.CausesValidation = true;
+                return false;
             }
             else if (minLength > -1 && maxLength > - 1 && textBox.Text.Length < minLength && textBox.Text.Length > maxLength)
             {
                 ShowMessage(customMessage, textBox);
-                textBox.CausesValidation = true;
+                return false;
             }
-            else
+            RemoveMessage(textBox);
+            return true;
+        }
+
+        private static void RemoveMessage(TextBox textBox)
+        {
+            if (validateMessages.ContainsKey(textBox.Name))
             {
-                if (validateMessages.ContainsKey(textBox))
-                {
-                    textBox.Parent.Controls.Remove(validateMessages[textBox]);
-                    validateMessages.Remove(textBox);
-                }
-                textBox.CausesValidation = false;
+                validateMessages[textBox.Name].Visible = false;
+                validateMessages.Remove(textBox.Name);
             }
         }
 
@@ -40,10 +42,8 @@ namespace UniSystem
             label.ForeColor = Color.Red;
             textBox.Parent.Controls.Add(label);
             
-            if (!validateMessages.ContainsKey(textBox))
-                validateMessages.Add(textBox, label);
-            else
-                validateMessages[textBox] = label;
+            if (!validateMessages.ContainsKey(textBox.Name))
+                validateMessages.Add(textBox.Name, label);
         }
     }
 }

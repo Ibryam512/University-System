@@ -44,7 +44,8 @@ namespace UniSystem
 
         public static void AddRoute(string route, UserControl userControl)
         {
-            routes.Add(route, userControl);
+            if (!routes.ContainsKey(route))
+                routes.Add(route, userControl);
 
             if (userControl is EditStudentControl)
             {
