@@ -1,4 +1,5 @@
 ﻿using UniSystem.Common;
+using UniSystem.Controls;
 using UniSystem.Controls.Students;
 using UniSystem.Data;
 using UniSystem.Data.Entities;
@@ -38,7 +39,7 @@ namespace UniSystem.Services
             this.context.Students.Add(student);
             studentBindingModel.Id = student.Id;
 
-            if (studentBindingModel.Grades.Count > 0)
+            if (studentBindingModel.Grades.Count > 0 && !studentBindingModel.Grades.ContainsKey(""))
                 Program.GradeService.AddGrades(student.Id, studentBindingModel.Grades);
 
             Program.AuthService.AddStudentAccount(student);

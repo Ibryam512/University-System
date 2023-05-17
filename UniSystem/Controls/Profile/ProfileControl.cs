@@ -60,11 +60,9 @@ namespace UniSystem.Controls.Profile
                 }
             };
 
-            Router.RemoveRoute("profile");
-            Router.AddRoute("profile", new ProfileControl());
+            Router.RefreshRoute("profile", new ProfileControl());
 
-            Router.RemoveRoute("grades");
-            Router.AddRoute("grades", new GradesControl());
+            Router.RefreshRoute("grades", new GradesControl());
 
             authForm.Show();
         }

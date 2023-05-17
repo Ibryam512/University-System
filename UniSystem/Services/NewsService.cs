@@ -4,6 +4,7 @@ using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
+using UniSystem.Controls;
 using UniSystem.Controls.News;
 using UniSystem.Data;
 using UniSystem.Data.Entities;

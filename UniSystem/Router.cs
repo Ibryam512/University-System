@@ -3,6 +3,7 @@ using UniSystem.Controls.Grades;
 using UniSystem.Controls.News;
 using UniSystem.Controls.Profile;
 using UniSystem.Controls.Students;
+using UniSystem.Models;
 
 namespace UniSystem
 {
@@ -27,12 +28,14 @@ namespace UniSystem
             {
                 ((StudentsControl)routes["students"]).RefreshTable();
                 GetPanelFromRoute("add").Navigate("students");
+                Router.RefreshRoute("add", new AddStudentControl());
             };
 
             ((AddNewsControl)routes["news/add"]).ButtonAddNews.Click += (s, args) =>
             {
                 ((NewsControl)routes["news"]).ShowNews();
                 GetPanelFromRoute("news/add").Navigate("news");
+                RefreshRoute("news/add", new AddNewsControl());
             };
         }
 
@@ -42,7 +45,7 @@ namespace UniSystem
             panel.Controls.Add(routes[route]);
         }
 
-        public static void AddRoute(string route, UserControl userControl)
+        public static void AddRoute(string route, UserControl userControl, string facultyNumber = "")
         {
             if (!routes.ContainsKey(route))
                 routes.Add(route, userControl);
@@ -53,6 +56,7 @@ namespace UniSystem
                 {
                     ((StudentsControl)routes["students"]).RefreshTable();
                     GetPanelFromRoute(route).Navigate("students");
+                    RefreshRoute($"students/{facultyNumber}", new StudentDetailsControl(facultyNumber));
                 };
             }
         }
@@ -60,6 +64,32 @@ namespace UniSystem
         public static void RemoveRoute(string key)
         {
             routes.Remove(key);
+        }
+
+        public static void RefreshRoute(string key, UserControl userControl)
+        {
+            RemoveRoute(key);
+            AddRoute(key, userControl);
+
+            if (userControl is AddStudentControl)
+            {
+                ((AddStudentControl)routes["add"]).ButtonAddStudent.Click += (s, args) =>
+                {
+                    ((StudentsControl)routes["students"]).RefreshTable();
+                    GetPanelFromRoute("add").Navigate("students");
+                    Router.RefreshRoute("add", new AddStudentControl());
+                };
+            }
+
+            if (userControl is AddNewsControl)
+            {
+                ((AddNewsControl)routes["news/add"]).ButtonAddNews.Click += (s, args) =>
+                {
+                    ((NewsControl)routes["news"]).ShowNews();
+                    GetPanelFromRoute("news/add").Navigate("news");
+                    RefreshRoute("news/add", new AddNewsControl());
+                };
+            }
         }
 
         private static Panel GetPanelFromRoute(string route)
